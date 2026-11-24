@@ -1,0 +1,22 @@
+name: CI
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11", cache: pip }
+      - run: pip install -r requirements-dev.txt
+      - run: python -m pytest -q --cov=app --cov-report=term
+      - name: Re-run the 100-scenario evaluation
+        run: python -m evaluations.run_eval 2>/dev/null
+      - run: cat evaluations/evaluation_report.md >> "$GITHUB_STEP_SUMMARY"
+  docker-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker compose up -d --build
+      - run: bash scripts/smoke_test.sh
+      - if: failure()
+        run: docker compose logs --tail=80

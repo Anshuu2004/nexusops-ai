@@ -1,0 +1,37 @@
+services:
+  db:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_PASSWORD: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7-alpine
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  mock-erp:
+    build: .
+    command: uvicorn app.mock_erp:app --host 0.0.0.0 --port 8001
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/postgres
+      REDIS_URL: redis://redis:6379/0
+      ERP_BASE_URL: http://mock-erp:8001
+      JWT_SECRET: change-me-in-real-deployments-please-32b
+      # GEMINI_API_KEY: <optional - enables the LLM planner, falls back to rules on failure>
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mock-erp:
+        condition: service_started

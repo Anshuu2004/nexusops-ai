@@ -1,0 +1,379 @@
+{
+  "benchmark": "NexusOps workflow reliability (fault-injection suite)",
+  "seed": 2026,
+  "scenario_count": 100,
+  "categories": {
+    "normal": 30,
+    "transient_api_failure": 20,
+    "timeout_after_commit": 15,
+    "human_rejection": 10,
+    "partial_approval": 5,
+    "crash_recovery": 10,
+    "invalid_data": 5,
+    "permanent_api_failure": 5
+  },
+  "policy_cache": {
+    "hits": 904,
+    "misses": 3
+  },
+  "modes": {
+    "naive": {
+      "scenarios": 100,
+      "passed": 55,
+      "pass_rate_pct": 55.0,
+      "duplicate_actions_total": 27,
+      "scenarios_with_duplicates": 10,
+      "unexpected_exceptions": 0,
+      "latency_ms_p50": 48.1,
+      "latency_ms_p95": 145.7,
+      "by_category": {
+        "normal": {
+          "passed": 30,
+          "total": 30
+        },
+        "transient_api_failure": {
+          "passed": 0,
+          "total": 20
+        },
+        "timeout_after_commit": {
+          "passed": 0,
+          "total": 15
+        },
+        "human_rejection": {
+          "passed": 10,
+          "total": 10
+        },
+        "partial_approval": {
+          "passed": 5,
+          "total": 5
+        },
+        "crash_recovery": {
+          "passed": 0,
+          "total": 10
+        },
+        "invalid_data": {
+          "passed": 5,
+          "total": 5
+        },
+        "permanent_api_failure": {
+          "passed": 5,
+          "total": 5
+        }
+      },
+      "failures": [
+        {
+          "id": "S031",
+          "category": "transient_api_failure",
+          "status": "no_eligible_orders",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S032",
+          "category": "transient_api_failure",
+          "status": "no_eligible_orders",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S033",
+          "category": "transient_api_failure",
+          "status": "no_eligible_orders",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S034",
+          "category": "transient_api_failure",
+          "status": "no_eligible_orders",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 4
+        },
+        {
+          "id": "S035",
+          "category": "transient_api_failure",
+          "status": "failed",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S036",
+          "category": "transient_api_failure",
+          "status": "failed",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S037",
+          "category": "transient_api_failure",
+          "status": "completed_with_errors",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S038",
+          "category": "transient_api_failure",
+          "status": "no_eligible_orders",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 4
+        },
+        {
+          "id": "S039",
+          "category": "transient_api_failure",
+          "status": "completed_with_errors",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S040",
+          "category": "transient_api_failure",
+          "status": "completed_with_errors",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 4
+        },
+        {
+          "id": "S041",
+          "category": "transient_api_failure",
+          "status": "no_eligible_orders",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S042",
+          "category": "transient_api_failure",
+          "status": "failed",
+          "expected_status": "completed",
+          "duplicate_actions": 0,
+          "tickets": 0,
+          "expected_tickets": 2
+        }
+      ]
+    },
+    "retry_only": {
+      "scenarios": 100,
+      "passed": 75,
+      "pass_rate_pct": 75.0,
+      "duplicate_actions_total": 96,
+      "scenarios_with_duplicates": 25,
+      "unexpected_exceptions": 0,
+      "latency_ms_p50": 53.9,
+      "latency_ms_p95": 112.5,
+      "by_category": {
+        "normal": {
+          "passed": 30,
+          "total": 30
+        },
+        "transient_api_failure": {
+          "passed": 20,
+          "total": 20
+        },
+        "timeout_after_commit": {
+          "passed": 0,
+          "total": 15
+        },
+        "human_rejection": {
+          "passed": 10,
+          "total": 10
+        },
+        "partial_approval": {
+          "passed": 5,
+          "total": 5
+        },
+        "crash_recovery": {
+          "passed": 0,
+          "total": 10
+        },
+        "invalid_data": {
+          "passed": 5,
+          "total": 5
+        },
+        "permanent_api_failure": {
+          "passed": 5,
+          "total": 5
+        }
+      },
+      "failures": [
+        {
+          "id": "S051",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 6,
+          "tickets": 6,
+          "expected_tickets": 3
+        },
+        {
+          "id": "S052",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 3,
+          "tickets": 6,
+          "expected_tickets": 3
+        },
+        {
+          "id": "S053",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 4,
+          "tickets": 8,
+          "expected_tickets": 4
+        },
+        {
+          "id": "S054",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 8,
+          "tickets": 8,
+          "expected_tickets": 4
+        },
+        {
+          "id": "S055",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 6,
+          "tickets": 6,
+          "expected_tickets": 3
+        },
+        {
+          "id": "S056",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 4,
+          "tickets": 4,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S057",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 6,
+          "tickets": 6,
+          "expected_tickets": 3
+        },
+        {
+          "id": "S058",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 4,
+          "tickets": 4,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S059",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 2,
+          "tickets": 4,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S060",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 4,
+          "tickets": 4,
+          "expected_tickets": 2
+        },
+        {
+          "id": "S061",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 6,
+          "tickets": 6,
+          "expected_tickets": 3
+        },
+        {
+          "id": "S062",
+          "category": "timeout_after_commit",
+          "status": "completed",
+          "expected_status": "completed",
+          "duplicate_actions": 4,
+          "tickets": 4,
+          "expected_tickets": 4
+        }
+      ]
+    },
+    "full": {
+      "scenarios": 100,
+      "passed": 100,
+      "pass_rate_pct": 100.0,
+      "duplicate_actions_total": 0,
+      "scenarios_with_duplicates": 0,
+      "unexpected_exceptions": 0,
+      "latency_ms_p50": 89.7,
+      "latency_ms_p95": 142.6,
+      "by_category": {
+        "normal": {
+          "passed": 30,
+          "total": 30
+        },
+        "transient_api_failure": {
+          "passed": 20,
+          "total": 20
+        },
+        "timeout_after_commit": {
+          "passed": 15,
+          "total": 15
+        },
+        "human_rejection": {
+          "passed": 10,
+          "total": 10
+        },
+        "partial_approval": {
+          "passed": 5,
+          "total": 5
+        },
+        "crash_recovery": {
+          "passed": 10,
+          "total": 10
+        },
+        "invalid_data": {
+          "passed": 5,
+          "total": 5
+        },
+        "permanent_api_failure": {
+          "passed": 5,
+          "total": 5
+        }
+      },
+      "failures": []
+    }
+  },
+  "notes": [
+    "Synthetic scenarios against an in-process mock ERP; expected outcomes come from an independent oracle in scenarios.py, generated before any run.",
+    "naive/retry_only are weaker baselines implemented in this repo, not third-party systems.",
+    "The planner used is the deterministic RulePlanner; no LLM accuracy is measured here."
+  ]
+}
